@@ -1,12 +1,11 @@
 <?php 
 
-require('includes/config.php');
+//require('includes/config.php');
 
 $productId = $_GET['product'];
 
 // Get all products via SELECT * from the products table
-$strSQL = 
-"SELECT * FROM cis282store.products p WHERE p.product_id = $productId";
+$strSQL = "SELECT * FROM cis282store.products p ORDER BY p.product_Id "; // WHERE p.product_id = $productId
 
 // Step 1 - GET RESULTS: 
 // the mysqli_query() function takes two required arguments, the information needed to connect to the database ($connect) and the query string you want to execute ($strSQL)
