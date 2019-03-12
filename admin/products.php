@@ -17,18 +17,33 @@
 
     <body>
 
+        <div class="container-fluid">
+            <div class="row text-center">
+                <div class="col-1"></div>
+                <div class="col-1">Category</div>
+                <div class="col-1">Product Code</div>
+                <div class="col-2">Product Name</div>
+                <div class="col-5">Description</div>
+                <div class="col-1">List Price</div>
+                <div class="col-1">Discount %</div>
+                <!-- <div class="col-1">Date Added</div> -->
+            </div> <!-- close class row -->
+        </div> <!-- close class container -->
         <?php // var_dump($produtList); ?>
-        <?php foreach($productList as $row) { ?>	
-            <?php echo $row['product_id']; ?>
-            <?php echo $row['category_id']; ?>
-            <?php echo $row['product_code']; ?>
-            <?php echo $row['product_name']; ?>
-            <?php echo $row['description']; ?>
-            <?php echo $row['list_price']; ?>
-            <?php echo $row['discount_percent']; ?>
-            <?php echo $row['date_added']; ?>
-        <?php } ?>
-
+        <div class="container-fluid">
+            <div class="row text-center">        
+                <?php foreach($productList as $row) { ?>	
+                    <div class="col-1"><?php echo $row['product_id']; ?></div>
+                    <div class="col-1"><?php echo $row['category_id']; ?></div>
+                    <div class="col-1"><?php echo $row['product_code']; ?></div>
+                    <div class="col-2"><?php echo $row['product_name']; ?></div>
+                    <div class="col-5 text-left"><?php echo $row['description']; ?></div>
+                    <div class="col-1"><?php echo $row['list_price']; ?></div>
+                    <div class="col-1"><?php echo $row['discount_percent']; ?></div>
+                    <!-- <div class="col-1"><?php echo $row['date_added']; ?></div> -->
+                <?php } ?>
+            </div> <!-- close class row -->
+        </div> <!-- close class container -->
 
 
 
