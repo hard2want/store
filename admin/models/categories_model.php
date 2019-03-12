@@ -5,7 +5,7 @@
 $categoryId = $_GET['category'];
 
 // Get all products via SELECT * from the products table
-$strSQL = "SELECT * FROM cis282store.categories c ORDER BY c.category_Id "; // WHERE p.category_id = $categoryId
+$strSQL = "SELECT * FROM cis282store.categories c ORDER BY c.category_id "; // WHERE p.category_id = $categoryId
 
 // Step 1 - GET RESULTS: 
 // the mysqli_query() function takes two required arguments, the information needed to connect to the database ($connect) and the query string you want to execute ($strSQL)

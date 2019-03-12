@@ -17,23 +17,35 @@
 
     <body>
 
+        <div class="container main-title">
+            <div class="row">
+                <div class="col">
+                    <h2>Category List</h2>
+                    <a href="add_categories.php" class="btn btn-primary">Add Category</a>
+                </div> <!-- close class col -->
+            </div> <!-- close class row -->
+        </div> <!-- close class container main-title -->
+
         <div class="container">
-        <h1>Category List</h1>
             <div class="row text-center">
                 <div class="col-1"></div>
                 <div class="col-11 text-left">Category</div>
             </div> <!-- close class row -->
         </div> <!-- close class container -->
+
         <?php // var_dump($categoryList); ?>
-        <div class="container">
-            <div class="row text-center">        
-                <?php foreach($categoryList as $row) { ?>	
+        <?php foreach($categoryList as $row) { ?>	
+            <div class="container">
+                <div class="row text-center">        
                     <div class="col-1"><?php echo $row['category_id']; ?></div>
                     <div class="col-11 text-left"><a href="edit_categories.php?<?php echo $row['category_id']; ?>"><?php echo $row['category_name']; ?></a></div>
-                <?php } ?>
-            </div> <!-- close class row -->
-        </div> <!-- close class container -->
-
+                        <div class="col-12">
+                            <a href="edit_categories.php?edit=<?php echo $row['category_id']; ?>" class="btn btn-info">Edit</a>
+                            <a href="models/edit_categories_model.php?delete=<?php echo $row['category_id']; ?>" class="btn btn-danger">Delete</a>
+                        </div> <!-- close class col-12 -->
+                </div> <!-- close class row -->
+            </div> <!-- close class container -->
+        <?php } ?>
 
 
 	
