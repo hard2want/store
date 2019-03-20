@@ -16,16 +16,27 @@
     </head>
 
     <body>
+        <div class="container main-title">
+            <div class="row">
+                <div class="col">
+                    <h2>Product List</h2>
+                    <a href="add_products.php" class="btn btn-primary">Add Product</a>
+                </div> <!-- close class col -->
+            </div> <!-- close class row -->
+            <p><a href="index.html">Back to Store Admin Page</a></p>
+        </div> <!-- close class container main-title -->
 
         <div class="container-fluid">
             <div class="row text-center">
-                <div class="col-1"></div>
+                    <!-- <div class="col-1"></div> -->
                 <div class="col-1">Category</div>
                 <div class="col-1">Product Code</div>
                 <div class="col-2">Product Name</div>
-                <div class="col-5">Description</div>
+                <div class="col-4">Description</div>
                 <div class="col-1">List Price</div>
                 <div class="col-1">Discount %</div>
+                <div class="col-1">Edit</div>
+                <div class="col-1">Delete</div>
                 <!-- <div class="col-1">Date Added</div> -->
             </div> <!-- close class row -->
         </div> <!-- close class container -->
@@ -33,13 +44,15 @@
         <div class="container-fluid">
             <div class="row text-center">        
                 <?php foreach($productList as $row) { ?>	
-                    <div class="col-1"><?php echo $row['product_id']; ?></div>
+                    <!-- <div class="col-1"><?php echo $row['product_id']; ?></div> -->
                     <div class="col-1"><?php echo $row['category_id']; ?></div>
                     <div class="col-1"><?php echo $row['product_code']; ?></div>
                     <div class="col-2"><?php echo $row['product_name']; ?></div>
-                    <div class="col-5 text-left"><?php echo $row['description']; ?></div>
+                    <div class="col-4 text-left"><?php echo $row['description']; ?></div>
                     <div class="col-1"><?php echo $row['list_price']; ?></div>
                     <div class="col-1"><?php echo $row['discount_percent']; ?></div>
+                    <div class="col-1"><a href="edit_products.php?edit=<?php echo $row['product_id']; ?>" class="btn btn-info">Edit</a></div>
+                    <div class="col-1"><a href="models/edit_products_model.php?delete=<?php echo $row['product_id']; ?>" class="btn btn-danger">Delete</a></div>
                     <!-- <div class="col-1"><?php echo $row['date_added']; ?></div> -->
                 <?php } ?>
             </div> <!-- close class row -->

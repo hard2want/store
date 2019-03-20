@@ -24,6 +24,7 @@
                     <a href="add_categories.php" class="btn btn-primary">Add Category</a>
                 </div> <!-- close class col -->
             </div> <!-- close class row -->
+            <p><a href="index.html">Back to Store Admin Page</a></p>
         </div> <!-- close class container main-title -->
 
         <div class="container">
