@@ -1,6 +1,6 @@
 <?php
     require('includes/config.php');
-    require('models/cart_model.php');
+    require('models/bass_model.php');
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
 
-    <title>CIS 282 Store</title>
+    <title>CIS 282 Store | Bass</title>
     
 
 </head>
@@ -85,6 +85,7 @@
                             <input type="hidden" name="price" value="<?php echo $product['list_price']; ?>" />
                             <br>
                             <input type="submit" name="add_to_cart" class="btn btn-info cart-submit" value="Add to Cart" />
+                            <br>
                         </div>
                     </form>
                 </div>    

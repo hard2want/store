@@ -1,6 +1,7 @@
 <?php
     require('includes/config.php');
     require('models/cart_model.php');
+    require('models/search_model.php');
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +28,7 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">      
+      <li class="nav-item active">
         <a class="nav-link" href="guitar.php">Guitars <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
@@ -63,40 +64,27 @@
 </nav>
 
 <div class="container">
-    <div class="row">    
-    <?php        
-        if ($result):
-            if(mysqli_num_rows($result)>0):
-                while($product = mysqli_fetch_assoc($result)):
-                //print_r($product);
-    ?>
-                <div class="col-md-4 col-sm-6"> 
-                    <form method="post" action="cart.php?action=add&id=<?php echo $product['product_id']; ?>">
-                        <div class="products">
-                            <br>
-                            <?php $productPicName = str_replace(" ", "_", $product['product_code']); ?>
-                            <a href="product.php?product=<?php echo $product['product_id']; ?>">
-                              <img src="img/<?php echo $product['product_code']; ?>_l.jpg" class="img-fluid" />
-                            </a>
-                            <h4 class="text-info"><a href="product.php?product=<?php echo $product['product_id']; ?>"><?php echo $product['product_name']; ?></a></h4>
-                            <h4 class="text-info">$<?php echo $product['list_price']; ?></h4>
-                            <input type="text" name="quantity" class="form-control" value="1" />
-                            <input type="hidden" name="name" value="<?php echo $product['product_name']; ?>" />
-                            <input type="hidden" name="price" value="<?php echo $product['list_price']; ?>" />
-                            <br>
-                            <input type="submit" name="add_to_cart" class="btn btn-info cart-submit" value="Add to Cart" />
-                        </div>
-                    </form>
-                </div>    
-                <?php
-                endwhile;
-            endif;
-        endif;    
-    ?>
+    <div class="row">
+        <div class="col-12 search_results">   
+            <h2>Search Results For: "<?php echo "$search"; ?>"</h2>
+        </div>
+
+    <?php  
+        while ($result = mysqli_fetch_array($searchResults)) { ?>
+
+            <div class="col-2 search-img">
+                <?php $resultPicName = str_replace(" ", "_", $result['product_code']); ?><a href="product.php?product=<?php echo $result['product_id']; ?>"><img src="img/<?php echo $result['product_code']; ?>_l.jpg" class="img-fluid" /></a>
+                <br><br><br>
+            </div>
+
+            <div class="col-10 search_info">
+                <h2><a href="product.php?product=<?php echo $result['product_id']; ?>">
+                <?php echo $result['product_name']; ?></a></h2>
+                <h4>$<?php echo $result['list_price']; ?></h4>
+                <br><br><br>
+            </div>
+        <?php } ?>
     </div>
-
-
-
 </div>
 
 

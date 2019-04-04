@@ -1,6 +1,7 @@
 <?php
     require('includes/config.php');
-    require('models/cart_model.php');
+    require('models/product_model.php');
+    //require('models/cart_model.php');
 ?>
 
 <!DOCTYPE html>
@@ -13,12 +14,17 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
 
-    <title>CIS 282 Store</title>
+    <?php        
+        if ($result):
+            if(mysqli_num_rows($result)>0):
+                while($product = mysqli_fetch_assoc($result)):
+                //print_r($product);
+    ?>
+    <title>CIS 282 Store | <?php echo $product['product_name']; ?></title>
     
 
 </head>
 <body>
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="index.php">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,44 +69,44 @@
 </nav>
 
 <div class="container">
-    <div class="row">    
-    <?php        
-        if ($result):
-            if(mysqli_num_rows($result)>0):
-                while($product = mysqli_fetch_assoc($result)):
-                //print_r($product);
-    ?>
-                <div class="col-md-4 col-sm-6"> 
-                    <form method="post" action="cart.php?action=add&id=<?php echo $product['product_id']; ?>">
-                        <div class="products">
-                            <br>
-                            <?php $productPicName = str_replace(" ", "_", $product['product_code']); ?>
-                            <a href="product.php?product=<?php echo $product['product_id']; ?>">
-                              <img src="img/<?php echo $product['product_code']; ?>_l.jpg" class="img-fluid" />
-                            </a>
-                            <h4 class="text-info"><a href="product.php?product=<?php echo $product['product_id']; ?>"><?php echo $product['product_name']; ?></a></h4>
-                            <h4 class="text-info">$<?php echo $product['list_price']; ?></h4>
-                            <input type="text" name="quantity" class="form-control" value="1" />
-                            <input type="hidden" name="name" value="<?php echo $product['product_name']; ?>" />
-                            <input type="hidden" name="price" value="<?php echo $product['list_price']; ?>" />
-                            <br>
-                            <input type="submit" name="add_to_cart" class="btn btn-info cart-submit" value="Add to Cart" />
-                        </div>
-                    </form>
-                </div>    
-                <?php
+    <div class="row">
+        <div class="col-12">
+            <h2><?php echo $product['product_name']; ?></h2>
+        </div>
+    </div>
+    
+    <div class="row">
+
+            <div class="col-5">
+                <br>
+                <?php $productPicName = str_replace(" ", "_", $product['product_code']); ?>
+                <img src="img/<?php echo $product['product_code']; ?>_l.jpg" class="img-fluid" />   
+                <form method="post" action="cart.php?action=add&id=<?php echo $product['product_id']; ?>">
+                <br>
+                <input type="text" name="quantity" class="form-control" value="1" />
+                <input type="hidden" name="name" value="<?php echo $product['product_name']; ?>" />
+                <input type="hidden" name="price" value="<?php echo $product['list_price']; ?>" />
+                <br>
+                <input type="submit" name="add_to_cart" class="btn btn-info cart-submit" value="Add to Cart" />
+                <br>          
+            </form>
+         
+            </div>
+
+            <div class="col-7">
+                <?php echo $product['description']; ?>
+                <h4 class="price">$<?php echo $product['list_price']; ?></h4>
+            </div>
+
+    </div>
+    <br>
+    <a href="index.php">Continue Shopping</a>
+    <?php
                 endwhile;
             endif;
         endif;    
     ?>
-    </div>
-
-
-
 </div>
-
-
-
 
 
 
