@@ -1,8 +1,8 @@
 <?php
-    $dbhost = 'cis282store.cvsq1txmkdrk.us-east-1.rds.amazonaws.com'; // found via your RDS
-    $dbuser = 'beststore'; // your mySQL workbench user name
+    $dbhost = 'cis282final.cvsq1txmkdrk.us-east-1.rds.amazonaws.com'; // found via your RDS
+    $dbuser = 'dbest1'; // your mySQL workbench user name
     $dbpass = 'Going2win'; // password from mySQL workbench
-    $dbname = 'cis282store'; // your database name
+    $dbname = 'cis282final'; // your database name
     $connect = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
     if (! $connect)
     {
